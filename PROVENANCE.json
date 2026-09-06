@@ -1,0 +1,44 @@
+{
+  "snapshot_date": "2026-09-06",
+  "paper_title": "Finite-Sample Stability for Gram-Reduced Bayes-Optimal Quantum State Discrimination",
+  "reference_environment": {
+    "python": "3.13.2",
+    "numpy": "2.5.1",
+    "mpmath": "1.4.1"
+  },
+  "files": {
+    "state_discrimination_bayes_gram_stability_audit.py": {
+      "source_path": "Quantum/numerics/state_discrimination_bayes_gram_stability_audit.py",
+      "sha256": "20e60bda7a3b606b341db7dc9ab7d01fe67987c906cafa9b36acd20438d8d7cf"
+    },
+    "AQ_SDP_BAYES_GRAM_STABILITY_v1_RESULT.json": {
+      "source_path": "Quantum/numerics/results/AQ_SDP_BAYES_GRAM_STABILITY_v1_RESULT.json",
+      "sha256": "2dd3a56c4492a93a7acaeb3a3792b346f901be0b20576818786228a816074fb8"
+    },
+    "state_discrimination_pairwise_lower_bound_audit.py": {
+      "source_path": "Quantum/numerics/state_discrimination_pairwise_lower_bound_audit.py",
+      "sha256": "5ca2c1663d3268173016565ac17d0c2ed6cc6c9e7390e13c412101f7b0acccf5"
+    },
+    "AQ_SDP_PAIRWISE_LOWER_BOUND_v1_RESULT.json": {
+      "source_path": "Quantum/numerics/results/AQ_SDP_PAIRWISE_LOWER_BOUND_v1_RESULT.json",
+      "sha256": "4d298c8af1ebb062d3bf624679727138326426042d7da06798d6a68dba0e568d"
+    },
+    "state_discrimination_coherent_gram_audit.py": {
+      "source_path": "Quantum/numerics/state_discrimination_coherent_gram_audit.py",
+      "sha256": "2c9a40673e9cbc014470adda329264cab0e6b3e9271f260357d3da6fdfc46efe"
+    },
+    "AQ_SDP_COHERENT_GRAM_v1_RESULT.json": {
+      "source_path": "Quantum/numerics/results/AQ_SDP_COHERENT_GRAM_v1_RESULT.json",
+      "sha256": "2b7868081c0a09752f5bd9acfe112d8afe7d6d001fc252ec2702ba16e2eaddfb"
+    },
+    "state_discrimination_direct_value_audit.py": {
+      "source_path": "Quantum/numerics/state_discrimination_direct_value_audit.py",
+      "sha256": "a60bba26e6de5e79c8bc7c32758c7085a7782742c2604d59093c067b9ad1f7fe"
+    },
+    "AQ_SDP_DIRECT_VALUE_v1_RESULT.json": {
+      "source_path": "Quantum/numerics/results/AQ_SDP_DIRECT_VALUE_v1_RESULT.json",
+      "sha256": "74d05b1b060311b3b7bdf64a6e1667e03d443288173decfadffe34f13c14c27e"
+    }
+  },
+  "repository_url": "https://github.com/Gaozhongpai/quantum-gram-stability-certificates"
+}

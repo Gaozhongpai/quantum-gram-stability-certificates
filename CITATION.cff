@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: >-
+  Please cite these audit programs and the accompanying paper, identifying
+  the software release or commit used.
+title: Quantum Gram Stability Certificates
+abstract: >-
+  Reproducible finite audit programs accompanying Zhongpai Gao's paper
+  Finite-Sample Stability for Gram-Reduced Bayes-Optimal Quantum State Discrimination.
+authors:
+  - family-names: Gao
+    given-names: Zhongpai
+    orcid: https://orcid.org/0000-0003-4344-4501
+type: software
+license: MIT
+repository-code: https://github.com/Gaozhongpai/quantum-gram-stability-certificates

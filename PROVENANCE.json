@@ -1,5 +1,5 @@
 {
-  "snapshot_date": "2026-09-06",
+  "snapshot_date": "2026-09-08",
   "paper_title": "Finite-Sample Stability for Gram-Reduced Bayes-Optimal Quantum State Discrimination",
   "reference_environment": {
     "python": "3.13.2",
@@ -9,11 +9,11 @@
   "files": {
     "state_discrimination_bayes_gram_stability_audit.py": {
       "source_path": "Quantum/numerics/state_discrimination_bayes_gram_stability_audit.py",
-      "sha256": "20e60bda7a3b606b341db7dc9ab7d01fe67987c906cafa9b36acd20438d8d7cf"
+      "sha256": "229aa1d0a1eac6a90f8c14e331aab0983cd990597ddc3565f8f138a3de2d426b"
     },
     "AQ_SDP_BAYES_GRAM_STABILITY_v1_RESULT.json": {
       "source_path": "Quantum/numerics/results/AQ_SDP_BAYES_GRAM_STABILITY_v1_RESULT.json",
-      "sha256": "2dd3a56c4492a93a7acaeb3a3792b346f901be0b20576818786228a816074fb8"
+      "sha256": "25db00ab4693bc033a0d398081c349285afd93ebcb4705221e54bbf9c1f68d90"
     },
     "state_discrimination_pairwise_lower_bound_audit.py": {
       "source_path": "Quantum/numerics/state_discrimination_pairwise_lower_bound_audit.py",

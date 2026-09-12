@@ -14,6 +14,8 @@ This repository is self-contained; no research-workspace checkout is required.
 
 These are finite numerical and exact-arithmetic consistency checks, not formal eigenvalue certificates or a proof of the continuum theorems. The programs do not implement the inherited collective tomography measurement and do not certify quantum advantage or unrestricted sample optimality.
 
+The 8 September working revision also checks gap-sensitive Bayes stability: 48 matrix cases, 36 sampling-budget cases, and a false-gap adverse control. A supplied full-Gram floor `G >= kappa I` yields `O(N^3 kappa^-1 epsilon^-2 log(N/delta))` pairwise shots. A certified positive floor of the computed repair sharpens its posterior interval without assuming a true-Gram gap. These refinements do not replace the gap-free theorem.
+
 ## Run
 
 Python 3.12 or later for the pinned NumPy version, plus mpmath. The reference environment is Python 3.13.2, NumPy 2.5.1 and mpmath 1.4.1. Install the reference package versions with:
@@ -54,7 +56,7 @@ Repository: [quantum-gram-stability-certificates](https://github.com/Gaozhongpai
 
 `CITATION.cff` supplies citation metadata. Cite the accompanying paper by title
 and identify the software commit or versioned release used. The reference
-snapshot is dated 6 September 2026.
+snapshot is dated 8 September 2026 (local working revision).
 
 ## License
 

@@ -312,6 +312,52 @@ def two_outcome_reduced_certificate(
     }
 
 
+def gap_refinement_checks():
+    rng = np.random.default_rng(20260908)
+    rows = []
+    for n in (2, 3, 4):
+        for floor in (0.05, 0.2, 0.5, 0.8):
+            for _ in range(4):
+                g = floor*np.eye(n)+(1-floor)*correlation_matrix(n, rng)
+                h = floor*np.eye(n)+(1-floor)*correlation_matrix(n, rng)
+                x = psd_root(g)-psd_root(h)
+                assert np.linalg.norm(psd_root(g)@x+x@psd_root(h)-(g-h), 'fro') < TOL
+                gap_sum = math.sqrt(np.linalg.eigvalsh(g)[0])+math.sqrt(np.linalg.eigvalsh(h)[0])
+                assert np.linalg.norm(x, 'fro') <= np.linalg.norm(g-h, 'fro')/gap_sum + TOL
+                priors = rng.random(n); priors /= sum(priors)
+                rewards = rng.normal(size=(2,n))
+                delta = math.sqrt(np.dot(priors, np.ptp(rewards, axis=0)**2))
+                value_gap = abs(two_outcome_optimum(psd_root(g),priors,rewards)
+                                -two_outcome_optimum(psd_root(h),priors,rewards))
+                bound = delta*math.sqrt(max(priors))*np.linalg.norm(g-h,'fro')/gap_sum
+                assert value_gap <= bound+TOL
+                eta = 0.015
+                noisy = bounded_noisy_hermitian(g,eta,rng)
+                projected, _ = nearest_correlation((noisy-floor*np.eye(n))/(1-floor))
+                repaired = floor*np.eye(n)+(1-floor)*projected
+                assert np.linalg.eigvalsh(repaired)[0] >= floor-TOL
+                assert np.linalg.norm(repaired-g,'fro') <= math.sqrt(n*(n-1))*eta+TOL
+                rows.append({'N':n, 'floor':floor, 'value_gap':value_gap, 'radius':bound})
+    budgets = []
+    for n in (2,3,5):
+        for floor in (0.1,0.3,0.8):
+            for epsilon in (0.01,0.03,0.1,0.2):
+                eta = 2*math.sqrt(floor)*epsilon/math.sqrt(n-1)
+                assert abs(math.sqrt(n-1)*eta/(2*math.sqrt(floor))-epsilon) < TOL
+                assert abs(4/eta**2-(n-1)/(floor*epsilon**2)) < 1e-7
+                budgets.append({'N':n, 'floor':floor, 'epsilon':epsilon})
+    # A false gap promise biases even exact overlap data at the singular boundary.
+    g = np.ones((2,2)); floor = 0.2
+    projected, _ = nearest_correlation((g-floor*np.eye(2))/(1-floor))
+    h = floor*np.eye(2)+(1-floor)*projected
+    assert np.linalg.norm(h-g,'fro') > 0.1
+    value_gap = math.sqrt(1-h[0,1]**2)/2
+    assert value_gap > 0.2
+    return {'matrix_and_value_rows':rows, 'sampling_rows':budgets,
+            'false_gap_with_exact_data_rejected':True,
+            'singular_rank_fourth_power_claim_unchanged':True}
+
+
 def main() -> int:
     rng = np.random.default_rng(20260829)
 
@@ -630,6 +676,7 @@ def main() -> int:
             )
 
     payload = {
+        "gap_sensitive_refinement": gap_refinement_checks(),
         "candidate_id": CANDIDATE_ID,
         "status": STATUS,
         "theorem": {
